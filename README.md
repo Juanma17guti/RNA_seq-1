@@ -26,7 +26,14 @@ Datos de secuenciación originales directamente desde el NCBI:
 ### 🔢 Conteos genéticos en crudo  
 Archivo con los conteos genéticos:  
 [Conteos_crudos](https://ftp.ncbi.nlm.nih.gov/geo/series/GSE60nnn/GSE60450/suppl/GSE60450%5FLactation%2DGenewiseCounts%2Etxt%2Egz).  
-Descarga los diferentes archivos y habre tu entorno conda. Comenzamos a trabajar. 
+
+🚀Descarga los diferentes archivos y habre tu entorno conda. Comenzamos a trabajar🚀 
+
+---
 
 ## 2. Calidad 
+
+Antes de poder analizar cualquier resultado tenemos que ver la calidad de las secuencias que hemos obtenido. Para ello utilizamos los isguientes comandos en terminal: 
+  1. Utilizamos la herramienta **fastqc**: 
+
 
