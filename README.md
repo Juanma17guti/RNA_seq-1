@@ -13,6 +13,7 @@ El estudio analiza cómo el gen Mcl-1, un regulador crítico de la supervivencia
 ---
 
 ## 1. Inicio 🏁
+Recuerda que al final del todo tienes definiciones de las diferentes herramientas utilizadas
 
 Para comenzar necesitamos:  
 ### 🛠️ Entorno Conda  
@@ -33,7 +34,23 @@ Archivo con los conteos genéticos:
 
 ## 2. Calidad 
 
-Antes de poder analizar cualquier resultado tenemos que ver la calidad de las secuencias que hemos obtenido. Para ello utilizamos los isguientes comandos en terminal: 
+Antes de poder analizar cualquier resultado tenemos que ver la calidad de las secuencias que hemos obtenido. Para ello utilizamos los siguientes comandos en terminal: 
   1. Utilizamos la herramienta **fastqc**: 
+```
+fastqc Lecturas_Crudas -o X #X es la Ruta donde quieres que se guarde el resultado
+```
+  2. Utilizamos la herramienta **TrimGalore**:
+```
+trim_galore Lecturas_Crudas -o X
+```
+  3. Volvemos a utilizar **fastqc** después del filtrado con trimgalore y coparamos los resultados. 
 
 
+
+
+
+
+
+### 🔧 Herramientas: 
+- **fastqc:** Una herramienta de bioinformática utilizada para evaluar la calidad de los datos NGS. Su función principal es realizar un análisis de calidad de las lecturas o reads de secuenciación, generando un informe detallado sobre diferentes aspectos, como la calidad base, la distribución de longitudes de las lecturas, la presencia de secuencias adaptadoras, la composición de bases, la diversidad de las secuencias y más. El objetivo es identificar posibles problemas en los datos que puedan afectar el análisis posterior, como la existencia de sesgos en la secuenciación o la presencia de contaminación.(Otros ejemplos: MultiQC, fastp)
+- **TrimGalore:** Una herramienta de bioinformática utilizada para el recorte y la calidad de las lecturas de secenciacion de NGS. Su principal función es eliminar lecturas de baja calidad y secuencias adaptadoras de los datos de secuenciación, mejorando así la calidad de las lecturas antes de realizar análisis posteriores como ensamblaje o alineación.
