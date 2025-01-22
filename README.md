@@ -59,7 +59,7 @@ zgrep '@SRR1552444' Lecturas_crudas_trimed | wc -l
 firefox nombre_del_archivo.html
 ```
 
-##3. Alineamiento 
+## 3. Alineamiento 
 
 Ahora vamos a utilizar el alineador **Hisat2** para asi lanzar las nuevas lecturas recortadas contra el genoma de referencia. Primero tenemos que descargar el genoma de referencia en formato FASTA: 
 [Genoma de referencia para Hisat2 indexado](https://genome-idx.s3.amazonaws.com/hisat/mm10_genome.tar.gz). Despues de descargarlo lo descompimimos y guardamos la carpeta. Comando para lanzar Hisat2: 
@@ -70,7 +70,7 @@ Esto nos dara un archivo en formado **.sam** el cual esta tabulado y cada column
 ```
 grep -v "^@" Lecturas_alineadas.sam | cut -f5 | sort | uniq -c #Para mirar información relacionada c on el Mepeado (0 significa no se han alineado, 1 alineado pero de baja calidad y 60 buena calidad y unica)
 ```
-##4. SAM --> BAM 
+## 4. SAM --> BAM 
 Desde nuestra archivo SAM vamos a obtener un archivo BAM. Este archivo esta escrito en binario. 
 
 
