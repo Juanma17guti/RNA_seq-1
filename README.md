@@ -48,7 +48,7 @@ trim_galore Lecturas_Crudas -o X
 fastqc Lecturas_Crudas_trimed -o X
 ```
 
-Varios comandos para ver la diferncias entre antes y después: 
+Varios comandos para ver la diferencias entre antes y después: 
   1. Para ver el tamaño de las secuencias, con esto podemomos compara las secuencias que han sido eliminadas: 
 ```
 zgrep '@SRR1552444' Lecturas_crudas | wc -l
@@ -59,9 +59,24 @@ zgrep '@SRR1552444' Lecturas_crudas_trimed | wc -l
 firefox nombre_del_archivo.html
 ```
 
+##3. Alineamiento 
+
+Ahora vamos a utilizar el alineador **Hisat2** para asi lanzar las nuevas lecturas recortadas contra el genoma de referencia. Primero tenemos que descargar el genoma de referencia en formato FASTA: 
+[Genoma de referencia para Hisat2 indexado](https://genome-idx.s3.amazonaws.com/hisat/mm10_genome.tar.gz). Despues de descargarlo lo descompimimos y guardamos la carpeta. Comando para lanzar Hisat2: 
+```
+hitsat2 -k1 -U Lectura_crudas_trimed -x Genoma_referencia -S X #el parametro K define el alineamiento maximo por lectura
+```
+Esto nos dara un archivo en formado **.sam** el cual esta tabulado y cada columna con información diferente: 
+```
+grep -v "^@" Lecturas_alineadas.sam | cut -f5 | sort | uniq -c #Para mirar información relacionada c on el Mepeado (0 significa no se han alineado, 1 alineado pero de baja calidad y 60 buena calidad y unica)
+```
+##4. SAM --> BAM 
+Desde nuestra archivo SAM vamos a obtener un archivo BAM. Este archivo esta escrito en binario. 
+
 
 
 ### 🔧 Herramientas: 
 - **fastqc:** Una herramienta de bioinformática utilizada para evaluar la calidad de los datos NGS. Su función principal es realizar un análisis de calidad de las lecturas o reads de secuenciación, generando un informe detallado sobre diferentes aspectos, como la calidad base, la distribución de longitudes de las lecturas, la presencia de secuencias adaptadoras, la composición de bases, la diversidad de las secuencias y más. El objetivo es identificar posibles problemas en los datos que puedan afectar el análisis posterior, como la existencia de sesgos en la secuenciación o la presencia de contaminación.(Otros ejemplos: MultiQC, fastp)
 - **TrimGalore:** Una herramienta de bioinformática utilizada para el recorte y la calidad de las lecturas de secenciacion de NGS. Su principal función es eliminar lecturas de baja calidad y secuencias adaptadoras de los datos de secuenciación, mejorando así la calidad de las lecturas antes de realizar análisis posteriores como ensamblaje o alineación.
-
+- **Hisat2:**
+- **SAM**: 
