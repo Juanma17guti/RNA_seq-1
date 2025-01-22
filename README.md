@@ -43,14 +43,25 @@ fastqc Lecturas_Crudas -o X #X es la Ruta donde quieres que se guarde el resulta
 ```
 trim_galore Lecturas_Crudas -o X
 ```
-  3. Volvemos a utilizar **fastqc** después del filtrado con trimgalore y coparamos los resultados. 
+  3. Volvemos a utilizar **fastqc** después del filtrado con trimgalore y coparamos los resultados.
+```
+fastqc Lecturas_Crudas_trimed -o X
+```
 
-
-
-
+Varios comandos para ver la diferncias entre antes y después: 
+  1. Para ver el tamaño de las secuencias, con esto podemomos compara las secuencias que han sido eliminadas: 
+```
+zgrep '@SRR1552444' Lecturas_crudas | wc -l
+zgrep '@SRR1552444' Lecturas_crudas_trimed | wc -l
+```
+  2. Podemos observar tambien el resultado en los acchivos HTML que genera fastqc. 
+```
+firefox nombre_del_archivo.html
+```
 
 
 
 ### 🔧 Herramientas: 
 - **fastqc:** Una herramienta de bioinformática utilizada para evaluar la calidad de los datos NGS. Su función principal es realizar un análisis de calidad de las lecturas o reads de secuenciación, generando un informe detallado sobre diferentes aspectos, como la calidad base, la distribución de longitudes de las lecturas, la presencia de secuencias adaptadoras, la composición de bases, la diversidad de las secuencias y más. El objetivo es identificar posibles problemas en los datos que puedan afectar el análisis posterior, como la existencia de sesgos en la secuenciación o la presencia de contaminación.(Otros ejemplos: MultiQC, fastp)
 - **TrimGalore:** Una herramienta de bioinformática utilizada para el recorte y la calidad de las lecturas de secenciacion de NGS. Su principal función es eliminar lecturas de baja calidad y secuencias adaptadoras de los datos de secuenciación, mejorando así la calidad de las lecturas antes de realizar análisis posteriores como ensamblaje o alineación.
+
